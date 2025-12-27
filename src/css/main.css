@@ -1,0 +1,179 @@
+/**
+ * CAFG Main Stylesheet
+ * Base styles for the game
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+/* Game Canvas */
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* UI Container */
+#ui-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  font-size: 14px;
+}
+
+/* Enable pointer events for interactive UI elements */
+#ui-container * {
+  pointer-events: auto;
+}
+
+/* HUD Panels */
+.hud-panel {
+  position: absolute;
+  background: rgba(0, 20, 40, 0.8);
+  border: 2px solid #00FFFF;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #00FFFF;
+  text-shadow: 0 0 5px #00FFFF;
+}
+
+.hud-panel.warning {
+  border-color: #FF0000;
+  color: #FF0000;
+  text-shadow: 0 0 5px #FF0000;
+}
+
+.hud-panel.good {
+  border-color: #00FF00;
+  color: #00FF00;
+  text-shadow: 0 0 5px #00FF00;
+}
+
+/* Status Bars */
+.status-bar {
+  width: 200px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #00FFFF;
+  margin: 5px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.status-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00FF00, #FFFF00, #FF0000);
+  transition: width 0.1s linear;
+}
+
+.status-bar.health .status-bar-fill {
+  background: linear-gradient(90deg, #00FF00, #FFFF00);
+}
+
+.status-bar.shields .status-bar-fill {
+  background: linear-gradient(90deg, #0099FF, #00FFFF);
+}
+
+.status-bar.energy .status-bar-fill {
+  background: linear-gradient(90deg, #FFFF00, #FF9900);
+}
+
+/* Menu Styles */
+.menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 20, 40, 0.95);
+  border: 3px solid #00FFFF;
+  padding: 30px;
+  min-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
+  z-index: 100;
+}
+
+.menu h1 {
+  color: #00FFFF;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00FFFF;
+}
+
+.menu button {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  padding: 12px;
+  background: rgba(0, 100, 200, 0.5);
+  border: 2px solid #00FFFF;
+  color: #00FFFF;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.menu button:hover {
+  background: rgba(0, 150, 255, 0.8);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.menu button:active {
+  transform: scale(0.95);
+}
+
+/* Debug Display */
+.debug-info {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 20, 40, 0.8);
+  border: 1px solid #00FF00;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 11px;
+  color: #00FF00;
+  max-width: 300px;
+  z-index: 10;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hud-panel {
+    font-size: 11px;
+    padding: 8px;
+  }
+  
+  .status-bar {
+    width: 150px;
+    height: 18px;
+  }
+  
+  .menu {
+    min-width: 300px;
+    padding: 20px;
+  }
+  
+  .menu h1 {
+    font-size: 24px;
+  }
+}
