@@ -1,79 +1,41 @@
 /**
- * Game Configuration
- * Central location for all game constants and settings
+ * CAFG - Game Configuration
+ * Central configuration for Phaser game engine
  */
 
-export const GameConfig = {
-  // World
-  WORLD_WIDTH: 8192,
-  WORLD_HEIGHT: 8192,
-  
-  // Camera
-  CAMERA_WIDTH: 1920,
-  CAMERA_HEIGHT: 1080,
-  CAMERA_ZOOM_MIN: 0.5,
-  CAMERA_ZOOM_MAX: 2.0,
-  
-  // Physics
-  PHYSICS_GRAVITY: 0,
-  PHYSICS_DEBUG: false,
-  
-  // Game
-  TARGET_FPS: 60,
-  TIME_SCALE: 1.0,
-  
-  // Combat
-  DAMAGE_SCALE: 1.0,
-  WEAPON_SPREAD: 0.05, // 5% inaccuracy
-  
-  // AI
-  AI_UPDATE_INTERVAL: 500, // ms
-  AI_DECISION_THRESHOLD: 1000, // ms
-  
-  // Rendering
-  MAX_PARTICLES: 5000,
-  MAX_PROJECTILES: 1000,
-  LOD_DISTANCE: 3000, // Level of Detail threshold
-  
-  // Resources
-  STARTING_MINERALS: 500,
-  STARTING_ENERGY: 1000,
-  STARTING_ALLOY: 100,
-  STARTING_TECH_POINTS: 0,
-};
+import Phaser from 'phaser';
 
-export const GameDifficulty = {
-  EASY: {
-    name: 'Easy',
-    playerDamageMultiplier: 1.5,
-    enemyDamageMultiplier: 0.5,
-    resourceMultiplier: 1.5,
+const config = {
+  type: Phaser.AUTO,
+  parent: 'game-container',
+  width: 1600,
+  height: 900,
+  backgroundColor: '#0a0e27',
+  physics: {
+    default: 'arcade',
+    arcade: {
+      debug: false,
+      gravity: { y: 0 }, // Space has no gravity
+      enableBody: true,
+    },
   },
-  NORMAL: {
-    name: 'Normal',
-    playerDamageMultiplier: 1.0,
-    enemyDamageMultiplier: 1.0,
-    resourceMultiplier: 1.0,
+  scene: [], // Scenes will be added in main.js
+  render: {
+    pixelArt: false,
+    antialias: true,
+    roundPixels: false,
   },
-  HARD: {
-    name: 'Hard',
-    playerDamageMultiplier: 0.8,
-    enemyDamageMultiplier: 1.2,
-    resourceMultiplier: 0.75,
+  fps: {
+    target: 60,
+    forceSetTimeOut: false,
   },
-  INSANE: {
-    name: 'Insane',
-    playerDamageMultiplier: 0.6,
-    enemyDamageMultiplier: 1.5,
-    resourceMultiplier: 0.5,
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
+  audio: {
+    disableWebAudio: false,
   },
 };
 
-export const ShipClasses = {
-  FIGHTER: { id: 0, name: 'Fighter', maxHealth: 100 },
-  CORVETTE: { id: 1, name: 'Corvette', maxHealth: 500 },
-  FRIGATE: { id: 2, name: 'Frigate', maxHealth: 1500 },
-  CRUISER: { id: 3, name: 'Cruiser', maxHealth: 5000 },
-  BATTLESHIP: { id: 4, name: 'Battleship', maxHealth: 15000 },
-  DREADNOUGHT: { id: 5, name: 'Dreadnought', maxHealth: 50000 },
-};
+export default config;
